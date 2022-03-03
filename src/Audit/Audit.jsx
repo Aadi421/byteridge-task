@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActions } from '../_actions';
+import './Audit.css'
 
 import { Navbar, Nav } from 'react-bootstrap';
 class Auditpage extends React.Component {
@@ -33,15 +34,15 @@ class Auditpage extends React.Component {
                     {users.loading && <em>Loading users...</em>}
                     {users.error && <span className="text-danger">ERROR: {users.error}</span>}
                     {users.items &&
-                        <ul className="user-screen">
-                            <table className="audittable">
+                        
+                             <table className="audittable">
                             {users.items.map((user, index) =>
-                                <li key={user.id}>
-                                    
-                                        <tr className='tableRow'>
+                                
+                                       
+                                        <tr key={user.id} className='tableRow'>
                                             <td className="tabledata" >{user.id}</td>
                                             <td className='tabledata'>{user.role}</td>
-                                            <td className='tabledata'>{user.createdDate}</td>
+                                            <td className='tabledata'>{new Date(user.createdDate).toDateString()}</td>
                                             <td className='tabledata'>{user.firstName}</td>
                                             <td className='tabledata'>{user.lastName}</td>
                                             <td className='tabledata'>{
@@ -51,14 +52,14 @@ class Auditpage extends React.Component {
                                                 }
                                             </td>
                                         </tr>
-                                    
+                                     
                                     
                                     
                                
-                                </li>
+                               
                             )}
-                             </table>
-                        </ul>
+                               </table> 
+                        
                     }
                 </div>
             </div>
